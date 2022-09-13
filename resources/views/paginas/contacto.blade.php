@@ -9,32 +9,37 @@
 </head>
 
 <body>
-
-<div class="nav" id="inicio"><a href="/">Inicio</a></div>
-
 <h1>Contacto
 </h1>
-<form id="form1" name="form1" method="POST" action="/recibe-form-contacto">
+
+<form action="recibe-form" method="POST">
   @csrf
-  <label for="Nombre">Nombre</label>
-  <input type="text" name="Nombre" id="Nombre" />
-  
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" />
 
-  <label for="pwd">Password:</label>
-  <input type="password" id="pwd" name="pwd" minlength="4">
-    
-  <p>Comentario: 
-    <input name="comentario" type="text" id="comentario" value="" size="45" />
-  </p>
+  <label for="codigo">Codigo:</label>
+  <input type="text" id="codigo" name="codigo" value= "{{old('codigo') ?? $name}}">
+  @error('name')
+    <i>{{ $message }}</i>
+  @enderror
 
-  <p>
-    <input type="submit" name="enviar" id="enviar" value="Enviar" />
-  </p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-</form>
-<p>&nbsp;</p>
+  <label for="name">Nombre:</label>
+  <input type="text" id="name" name="name" value= "{{old('name') ?? $name}}">
+  @error('name')
+    <i>{{ $message }}</i>
+  @enderror
+  <label for="email">Correo:</label>
+  <input type="email" id="email" name="email" value= "{{old('email') ?? $name}}">
+  @error('email')
+    <i>{{ $message }}</i>
+  @enderror
+  <br>
+  <label for="comentario">Comentario</label><br>
+  <textarea name="comentario" rows="10" cols="40">{{old('comentario')}}</textarea><br>
+  @error('comentario')
+    <i>{{ $message }}</i>
+  @enderror
+  <br>
+  <input type="submit" value="Submit">
+
+<div class="nav" id="inicio"><a href="/">Inicio</a></div>
 </body>
 </html>
