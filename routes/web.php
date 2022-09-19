@@ -19,6 +19,3 @@ Route::get('/',function(){
 
 Route::get('/contacto/{codigo?}', [PaginaController::class, 'contacto']);
 Route::post('/contacto', [PaginaController::class, 'guarda']);
-
-
-
