@@ -17,8 +17,8 @@ Route::get('/',function(){
     return view('paginas.index');
 });
 
-Route::get('/contacto/{codigo_id?}', [PaginaController::class, 'contacto']);
-Route::post('/recibe-form', [PaginaController::class, 'recibeFormContacto']);
+Route::get('/contacto/{codigo?}', [PaginaController::class, 'contacto']);
+Route::post('/contacto', [PaginaController::class, 'guarda']);
 
 
 

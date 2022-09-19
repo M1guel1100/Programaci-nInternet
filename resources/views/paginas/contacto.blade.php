@@ -12,23 +12,17 @@
 <h1>Contacto
 </h1>
 
-<form action="recibe-form" method="POST">
+<form action="/contacto" method="POST">
   @csrf
-
-  <label for="codigo">Codigo:</label>
-  <input type="text" id="codigo" name="codigo" value= "{{old('codigo') ?? $name}}">
-  @error('name')
+  
+  <label for="nombre">Nombre:</label>
+  <input type="text"  name="nombre" value= "{{old('nombre') ?? $nombre}}">
+  @error('nombre')
     <i>{{ $message }}</i>
   @enderror
-
-  <label for="name">Nombre:</label>
-  <input type="text" id="name" name="name" value= "{{old('name') ?? $name}}">
-  @error('name')
-    <i>{{ $message }}</i>
-  @enderror
-  <label for="email">Correo:</label>
-  <input type="email" id="email" name="email" value= "{{old('email') ?? $name}}">
-  @error('email')
+  <label for="correo">Correo:</label>
+  <input type="text" name="correo" value= "{{old('correo') ?? $correo}}">
+  @error('correo')
     <i>{{ $message }}</i>
   @enderror
   <br>
@@ -39,7 +33,7 @@
   @enderror
   <br>
   <input type="submit" value="Submit">
-
+  
 <div class="nav" id="inicio"><a href="/">Inicio</a></div>
 </body>
 </html>

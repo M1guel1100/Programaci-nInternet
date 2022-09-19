@@ -6,26 +6,26 @@ use Illuminate\Http\Request;
 
 class PaginaController extends Controller
 {
-    public function contacto($codigo_id = null)
+    public function contacto($codigo = null)
     {
 
-        if($codigo_id == '1234'){
-            $name = "miguel perez";
-            $email = "example@example.com";
+        if($codigo == '1234'){
+            $nombre = "miguel perez";
+            $correo = "example@example.com";
         }
         else{
-            $name = null;
-            $email = null;
+            $nombre = null;
+            $correo = null;
         }
-        return view('paginas.contacto',compact('name','email'));
+        return view('paginas.contacto',compact('nombre','correo'));
     }
 
-    public function recibeFormContacto(Request $request)
+    public function guarda(Request $request)
     {
         $request -> validate([
-            'name' => 'required|max:255|min:3',
-            'email' => ['required','email'],
-            'comentario' => 'required',
+            'nombre' => 'required', 'min:5',
+            'correo' => ['required','email'],
+            'comentario' => 'required|min:5',
         ]);
     }
 }
