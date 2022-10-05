@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 
-class AumnoController extends Controller
+class AlumnoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class AumnoController extends Controller
      */
     public function index()
     {
-       
+        $alumnos = Alumno::all();
+       return view('paginas.alumnos.alumnoIndex',compact('alumnos'));
     }
 
     /**
@@ -24,7 +25,7 @@ class AumnoController extends Controller
      */
     public function create()
     {
-        //
+        return view('paginas.alumnos.alumnoCreate');
     }
 
     /**
@@ -35,7 +36,15 @@ class AumnoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request -> validate([
+            'nombre' => 'required', 'min:5',
+            'correo' => ['required','email'],
+            'codigo' => 'required|min:5',
+        ]);
+
+
+        Alumno::create($request->all());
+        return redirect('/index');
     }
 
     /**
@@ -44,20 +53,19 @@ class AumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Alumno $alumno)
     {
-        $alumno = Alumno::find($id);
-        return view('productoShow',compact('alumno'));
+        return view('paginas.alumnos.alumnoShow', compact('alumno'));
         
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Alumno $alumno
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Alumno $alumno)
     {
         
     }
@@ -69,7 +77,7 @@ class AumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Alumno $alumno)
     {
         //
     }
@@ -80,7 +88,7 @@ class AumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Alumno $alumno)
     {
         //
     }
