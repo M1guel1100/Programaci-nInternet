@@ -19,3 +19,9 @@ Route::get('/',function(){
 
 Route::get('/contacto/{codigo?}', [PaginaController::class, 'contacto']);
 Route::post('/contacto', [PaginaController::class, 'guarda']);
+
+Route::get('/alumno',[AlumnoController::class, 'index']);
+Route::get('/alumno/create',[AlumnoController::class, 'create']);
+Route::get('/alumno{id}',[AlumnoController::class, 'show']);
+
+
